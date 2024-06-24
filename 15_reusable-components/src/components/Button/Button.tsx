@@ -1,4 +1,5 @@
 import { VariantProps, cva } from "class-variance-authority";
+import Link from "next/link";
 import { ComponentProps, PropsWithChildren } from "react";
 
 const buttonVariant = cva("border rounded font-semibold transition hover:brightness-90 active:brightness-75", {
@@ -35,14 +36,22 @@ const buttonVariant = cva("border rounded font-semibold transition hover:brightn
 
 type ButtonVariant = VariantProps<typeof buttonVariant>;
 
-type ButtonProps = {} & ButtonVariant & ComponentProps<"button">;
+type ButtonProps = ButtonVariant & (({} & ComponentProps<"button">) | ({ href: string } & ComponentProps<typeof Link>));
 
 function Button({ intent, size, variant, children, ...props }: PropsWithChildren<ButtonProps>) {
-  return (
-    <button className={buttonVariant({ intent, size, variant })} {...props}>
-      {children}
-    </button>
-  );
+  if ("href" in props) {
+    return (
+      <a className={buttonVariant({ intent, size, variant })} {...props}>
+        {children}
+      </a>
+    );
+  } else {
+    return (
+      <button className={buttonVariant({ intent, size, variant })} {...props}>
+        {children}
+      </button>
+    );
+  }
 }
 
 export default Button;

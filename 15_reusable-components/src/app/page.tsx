@@ -8,8 +8,15 @@ export default function Home() {
       className="h-screen flex flex-col items-center justify-center gap-y-4
     "
     >
+      <Button intent="primary" size="md">
+        Primary
+      </Button>
+      <Button intent="primary" size="md" href="/">
+        Primary
+      </Button>
+
       {/* Button */}
-      <Button intent="primary" size="sm" onClick={() => alert("baa")}>
+      {/* <Button intent="primary" size="sm">
         Primary
       </Button>
       <Button intent="primary" size="md">
@@ -44,7 +51,7 @@ export default function Home() {
       </Button>
       <Button intent="danger" size="lg" variant="outline">
         Danger
-      </Button>
+      </Button> */}
 
       {/* Chip */}
       {/* <Chip label="Primary" intent="primary" />
