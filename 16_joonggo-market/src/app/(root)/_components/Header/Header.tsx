@@ -1,3 +1,4 @@
+import Button from "@/components/Button";
 import Link from "next/link";
 
 function Header() {
@@ -23,12 +24,16 @@ function Header() {
         </nav>
 
         <div className="ml-auto">
-          <ul className="flex gap-x-8">
+          <ul className="flex gap-x-2.5">
             <li>
-              <Link href="/log-in">로그인</Link>
+              <Button href="/log-in" size="sm">
+                로그인
+              </Button>
             </li>
             <li>
-              <Link href="/sign-up">회원가입</Link>
+              <Button href="/sign-up" size="sm" outline>
+                회원가입
+              </Button>
             </li>
           </ul>
         </div>
