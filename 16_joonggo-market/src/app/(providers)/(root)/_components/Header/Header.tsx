@@ -1,7 +1,12 @@
+"use client";
+
 import Button from "@/components/Button";
+import { useAuth } from "@/contexts/auth.context";
 import Link from "next/link";
 
 function Header() {
+  const { isInitialized, isLoggedIn } = useAuth();
+
   return (
     <header className="border-b border-black">
       <div className="container mx-auto max-w-[1024px] px-5 h-16 flex items-center">
@@ -23,20 +28,26 @@ function Header() {
           </ul>
         </nav>
 
-        <div className="ml-auto">
-          <ul className="flex gap-x-2.5">
-            <li>
-              <Button href="/log-in" size="sm">
-                로그인
-              </Button>
-            </li>
-            <li>
-              <Button href="/sign-up" size="sm" outline>
-                회원가입
-              </Button>
-            </li>
-          </ul>
-        </div>
+        {isInitialized ? (
+          isLoggedIn ? (
+            <div className="ml-auto">로그인 잘 되어있습니다</div>
+          ) : (
+            <div className="ml-auto">
+              <ul className="flex gap-x-2.5">
+                <li>
+                  <Button href="/log-in" size="sm">
+                    로그인
+                  </Button>
+                </li>
+                <li>
+                  <Button href="/sign-up" size="sm" outline>
+                    회원가입
+                  </Button>
+                </li>
+              </ul>
+            </div>
+          )
+        ) : null}
       </div>
     </header>
   );
