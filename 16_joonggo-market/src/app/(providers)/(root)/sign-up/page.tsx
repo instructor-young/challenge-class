@@ -11,11 +11,10 @@ function SignUpPage() {
     e.preventDefault();
 
     const { data, error } = await supabase.auth.signUp({
-      email: "example@email.com",
-      password: "example-password",
+      email: "a@a.com",
+      password: "aaaaaa",
+      options: { data: { nickname: "튜터" } },
     });
-
-    data;
   };
 
   return (
